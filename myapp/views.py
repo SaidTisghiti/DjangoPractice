@@ -22,8 +22,10 @@ def projects(request):
     # return JsonResponse({'projects': list(projects.values())})
     return render(request, 'projects.html', {'projects': projects})
 
-def tasks(request, id):
+def tasks(request):
     # task = Task.objects.get(id=id)
-    task = get_object_or_404(Task, id=id)
+    # task = get_object_or_404(Task, id=id)
     # return HttpResponse("task: %s - %s" % (task.title, task.description))
-    return render(request, 'tasks.html', {'task': task})
+    tasks = Task.objects.all()
+
+    return render(request, 'tasks.html', {'tasks': tasks})
